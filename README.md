@@ -39,13 +39,19 @@ The **AgentOps Incident Commander** is a demonstration of how multiple specializ
 
 ```mermaid
 flowchart TD
-    START([START]) --> TRIAGE[Triage Agent]
-    TRIAGE --> LOGS[Log Analysis]
-    TRIAGE --> METRICS[Metrics Analysis]
-    TRIAGE --> DEPLOYMENT[Deployment Analysis]
-    LOGS --> EVIDENCE[Evidence Aggregator]
+    START([start]) --> TRIAGE[triage]
+    
+    TRIAGE --> DEPLOYMENT[deployment]
+    TRIAGE --> LOGS[logs]
+    TRIAGE --> METRICS[metrics]
+    
+    DEPLOYMENT --> EVIDENCE[evidence]
+    LOGS --> EVIDENCE
     METRICS --> EVIDENCE
-    DEPLOYMENT --> EVIDENCE
+    
+    EVIDENCE --> DEVIL[devil]
+    DEVIL --> COMMANDER[commander]
+    COMMANDER --> END([end])
 ```
 ### 🧪 Sample Incident Output
 
